@@ -1,0 +1,44 @@
+vivo
+
+y19s
+6/128
+(Glossy Black , Glacier Blue)
+
+
+X200 FE
+12/256 | 12/512
+(yellow , Black)
+
+y29s
+6/128 , 8/256
+(Gold , Green)
+
+y29t 5g
+6/256
+(Gold , Green)
+
+V60
+12/256
+12/512
+(gold , purple , gray)
+
+V60 Lite 5G
+12/256 | 12/512
+(blue , black)
+
+y31 5g
+8/256
+(Green , Blue)
+
+y04s
+6/256
+(Green , Purple)
+
+x300
+12/256 | 16/512
+(Red , Black)
+
+
+x300 pro
+16/512
+(Black , Brown)

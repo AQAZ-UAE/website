@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQAZ Admin Console</title>
+    <meta name="description" content="AQAZ Admin Console – Manage products, sections, images and website content.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <div id="loginOverlay">
+        <div class="login-box">
+            <div class="logo-text">AQAZ Admin</div>
+            <p>Enter your credentials to continue.</p>
+            <input type="text" id="loginUser" placeholder="Username" autocomplete="off">
+            <input type="password" id="loginPass" placeholder="Password" autocomplete="off">
+            <button class="btn-login" id="btnLogin">Login</button>
+            <div class="error-msg" id="loginError"></div>
+        </div>
+    </div>
+
+    <!-- Admin Wrapper (hidden until login) -->
+    <div class="admin-wrapper" id="adminWrapper">
+
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-header">
+                <h3>AQAZ</h3>
+                <button class="btn-logout" id="btnLogout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active" data-page="dashboard">
+                    <span class="icon"><i class="fa-solid fa-chart-line"></i></span> Dashboard
+                </a>
+                <a href="#" data-page="products">
+                    <span class="icon"><i class="fa-solid fa-box"></i></span> Products
+                </a>
+                <a href="#" data-page="brands">
+                    <span class="icon"><i class="fa-solid fa-copyright"></i></span> Brands
+                </a>
+                <a href="#" data-page="sections">
+                    <span class="icon"><i class="fa-solid fa-layer-group"></i></span> Sections
+                </a>
+                <a href="#" data-page="trash">
+                    <span class="icon"><i class="fa-solid fa-trash-can"></i></span> Trash
+                    <span class="trash-count" id="trashCount" style="display: none;"></span>
+                </a>
+                <a href="#" data-page="settings">
+                    <span class="icon"><i class="fa-solid fa-gear"></i></span> Settings
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="admin-main">
+            <div class="admin-topbar">
+                <h1 id="pageTitle">Dashboard</h1>
+                <div class="topbar-actions">
+                    <button class="btn btn-primary" id="btnSaveAll" title="Download updated JSON files">
+                        <i class="fa-solid fa-floppy-disk"></i> Save Changes
+                    </button>
+                </div>
+            </div>
+
+            <div class="admin-content" id="adminContent">
+                <!-- Dynamic page content injected here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Product Edit Modal -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add Product</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="productForm">
+                    <input type="hidden" id="editProductId">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Brand</label>
+                            <select id="pBrand" required>
+                                <option value="">— Select Brand —</option>
+                            </select>
+                            <input type="text" id="pBrandNew" placeholder="Enter new brand name" style="display:none; margin-top:8px;">
+                        </div>
+                        <div class="form-group">
+                            <label>Model</label>
+                            <input type="text" id="pModel" required placeholder="e.g. iPhone 17 Pro Max">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" id="pTitle" required
+                            placeholder="e.g. iPhone 17 Pro Max 5G With FaceTime – ME Version">
+                    </div>
+
+                    <div class="form-row form-row-3">
+                        <div class="form-group">
+                            <label>Storage</label>
+                            <input type="text" id="pStorage" placeholder="e.g. 256GB">
+                        </div>
+                        <div class="form-group">
+                            <label>Colour</label>
+                            <input type="text" id="pColour" placeholder="e.g. Orange">
+                        </div>
+                        <div class="form-group">
+                            <label>Country / Version</label>
+                            <input type="text" id="pCountry" placeholder="e.g. TDRA">
+                        </div>
+                    </div>
+
+                    <div class="form-row form-row-3">
+                        <div class="form-group">
+                            <label>Price (AED)</label>
+                            <input type="number" id="pPrice" required min="0" placeholder="4899">
+                        </div>
+                        <div class="form-group">
+                            <label>Old Price (AED)</label>
+                            <input type="number" id="pOldPrice" min="0" placeholder="5099">
+                        </div>
+                        <div class="form-group">
+                            <label>Available Stock</label>
+                            <input type="number" id="pAvailable" required min="0" placeholder="50">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image URL</label>
+                        <input type="text" id="pImage" placeholder="https://... or assets/uploads/product.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Image Upload</label>
+                        <input type="file" id="pImageFile" accept="image/*">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Type</label>
+                            <select id="pType">
+                                <option value="phone">Phone</option>
+                                <option value="tablet">Tablet</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="watch">Watch</option>
+                                <option value="accessory">Accessory</option>
+                                <option value="audio">Audio</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Tags (comma-separated)</label>
+                            <input type="text" id="pTags" placeholder="apple, iphone, flagship">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelModal">Cancel</button>
+                <button class="btn btn-primary" id="saveProduct">
+                    <i class="fa-solid fa-check"></i> Save Product
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Dialog -->
+    <div class="confirm-overlay" id="confirmDialog">
+        <div class="confirm-box">
+            <h3 id="confirmTitle">Are you sure?</h3>
+            <p id="confirmMsg">This action cannot be undone.</p>
+            <div class="confirm-actions">
+                <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
+                <button class="btn btn-danger" id="confirmOk">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

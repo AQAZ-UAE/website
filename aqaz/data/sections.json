@@ -1,0 +1,240 @@
+{
+  "hotSelling": {
+    "title": "Hot Selling",
+    "items": [
+      { "productId": "apple-iphone-17-pro-max-256-tdra-orange", "order": 1 },
+      { "productId": "apple-iphone-17-pro-256-tdra-orange", "order": 2 },
+      { "productId": "apple-iphone-17-air-256-usa-gold", "order": 3 },
+      { "productId": "samsung-s25-ultra-256-silver-blue", "order": 4 },
+      { "productId": "apple-ipad-11-128-tdra-blue", "order": 5 },
+      { "productId": "apple-airpods-pro-3", "order": 6 },
+      { "productId": "apple-iphone-16-pro-max-256-tdra-natural", "order": 7 },
+      { "productId": "apple-iphone-17-pro-max-512-tdra-orange", "order": 8 },
+      { "productId": "samsung-a56-8-256-gray", "order": 9 },
+      { "productId": "apple-iphone-17-256-tdra-mist-blue", "order": 10 },
+      { "productId": "samsung-s25-ultra-256-gray", "order": 11 },
+      { "productId": "apple-iphone-16-pro-256-tdra-black", "order": 12 },
+      { "productId": "apple-airpods-4", "order": 13 },
+      { "productId": "samsung-a36-128-black", "order": 14 },
+      { "productId": "apple-iphone-17-pro-max-256-japan-orange", "order": 15 },
+      { "productId": "samsung-s24-ultra-256-gray", "order": 16 },
+      { "productId": "apple-iphone-17-pro-256-hk-orange", "order": 17 },
+      { "productId": "samsung-a07-4-64-black", "order": 18 },
+      { "productId": "samsung-a26-256-black", "order": 19 },
+      { "productId": "apple-iphone-15-128-tdra-black", "order": 20 }
+    ]
+  },
+
+  "nationalDaySale": {
+    "title": "National Day Sale",
+    "subtitle": "Enjoy National Day Sale",
+    "tabs": ["New Models", "Best Seller", "Most Viewed", "Top Brands"],
+    "items": [
+      {
+        "productId": "apple-iphone-17-pro-max-256-tdra-orange",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "new-models",
+        "overridePrice": 4899,
+        "overrideOldPrice": 5099
+      },
+      {
+        "productId": "apple-iphone-17-air-256-usa-gold",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "new-models",
+        "overridePrice": 3380,
+        "overrideOldPrice": 3599
+      },
+      {
+        "productId": "apple-iphone-17-pro-256-tdra-orange",
+        "giftTag": "Free Silicone Case",
+        "category": "new-models",
+        "overridePrice": 4499,
+        "overrideOldPrice": 4699
+      },
+      {
+        "productId": "apple-iphone-17-256-tdra-mist-blue",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "new-models",
+        "overridePrice": 3280,
+        "overrideOldPrice": 3599
+      },
+      {
+        "productId": "samsung-s25-ultra-256-silver-blue",
+        "giftTag": "Free Screen Protector",
+        "category": "best-seller",
+        "overridePrice": 2999,
+        "overrideOldPrice": 3649
+      },
+      {
+        "productId": "apple-iphone-16-pro-max-256-tdra-natural",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "best-seller",
+        "overridePrice": 4680,
+        "overrideOldPrice": 5099
+      },
+      {
+        "productId": "samsung-a56-8-256-gray",
+        "giftTag": "Free Earbuds",
+        "category": "most-viewed",
+        "overridePrice": 1199,
+        "overrideOldPrice": 1499
+      },
+      {
+        "productId": "apple-airpods-pro-3",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "most-viewed",
+        "overridePrice": 799,
+        "overrideOldPrice": 949
+      },
+      {
+        "productId": "apple-iphone-16-pro-max-512-tdra-desert",
+        "giftTag": "Chance to Win Free Gift",
+        "category": "top-brands",
+        "overridePrice": 5280,
+        "overrideOldPrice": 5949
+      },
+      {
+        "productId": "samsung-s24-ultra-256-gray",
+        "giftTag": "Free Smart Cover",
+        "category": "top-brands",
+        "overridePrice": 2799,
+        "overrideOldPrice": 3399
+      }
+    ]
+  },
+
+  "featuredCollections": {
+    "tabs": ["New Models", "Best Seller", "Most Viewed", "Top Brands"],
+    "items": [
+      { "productId": "apple-iphone-17-air-256-usa-gold", "category": "new-models" },
+      { "productId": "apple-iphone-17-pro-max-256-japan-orange", "category": "new-models" },
+      { "productId": "apple-iphone-17-pro-max-256-hk-orange", "category": "new-models" },
+      { "productId": "apple-iphone-17-pro-max-256-tdra-orange", "category": "new-models" },
+      { "productId": "apple-iphone-17-pro-256-tdra-orange", "category": "new-models" },
+      { "productId": "apple-iphone-17-256-tdra-mist-blue", "category": "new-models" },
+      { "productId": "samsung-a56-8-256-gray", "category": "new-models" },
+      { "productId": "samsung-s25-ultra-256-silver-blue", "category": "new-models" },
+      { "productId": "samsung-s25-ultra-256-gray", "category": "new-models" },
+      { "productId": "samsung-s25-fe-128-navy", "category": "new-models" },
+
+      { "productId": "apple-iphone-16-pro-max-256-tdra-natural", "category": "best-seller" },
+      { "productId": "apple-iphone-16-pro-max-512-tdra-desert", "category": "best-seller" },
+      { "productId": "apple-iphone-16-pro-256-tdra-black", "category": "best-seller" },
+      { "productId": "samsung-s24-ultra-256-gray", "category": "best-seller" },
+      { "productId": "apple-airpods-pro-3", "category": "best-seller" },
+      { "productId": "apple-airpods-4", "category": "best-seller" },
+      { "productId": "apple-ipad-11-128-tdra-blue", "category": "best-seller" },
+      { "productId": "samsung-a56-8-256-black", "category": "best-seller" },
+      { "productId": "samsung-a36-256-black", "category": "best-seller" },
+      { "productId": "samsung-a07-4-128-violet", "category": "best-seller" },
+
+      { "productId": "apple-iphone-17-pro-max-512-tdra-orange", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-max-512-hk-orange", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-512-tdra-orange", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-max-256-japan-silver", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-max-256-hk-blue", "category": "most-viewed" },
+      { "productId": "samsung-s25-ultra-512-jet-black", "category": "most-viewed" },
+      { "productId": "samsung-s25-ultra-256-jet-black", "category": "most-viewed" },
+      { "productId": "apple-iphone-16-pro-max-512-tdra-black", "category": "most-viewed" },
+      { "productId": "apple-iphone-16-pro-max-256-ksa-desert", "category": "most-viewed" },
+      { "productId": "apple-iphone-16-pro-256-india-desert", "category": "most-viewed" },
+
+      { "productId": "apple-iphone-17-pro-max-256-tdra-blue", "category": "top-brands" },
+      { "productId": "apple-iphone-17-pro-256-hk-blue", "category": "top-brands" },
+      { "productId": "apple-iphone-17-pro-256-hk-silver", "category": "top-brands" },
+      { "productId": "apple-iphone-17-air-512-tdra-black", "category": "top-brands" },
+      { "productId": "samsung-s25-ultra-256-black", "category": "top-brands" },
+      { "productId": "samsung-s25-ultra-256-white-silver", "category": "top-brands" },
+      { "productId": "samsung-s24-ultra-512-gray", "category": "top-brands" },
+      { "productId": "samsung-s24-256-violet", "category": "top-brands" },
+      { "productId": "apple-ipad-11-128-tdra-silver", "category": "top-brands" },
+      { "productId": "apple-ipad-11-128-tdra-pink", "category": "top-brands" }
+    ]
+  },
+
+  "bestSellers": {
+    "title": "Best Sellers",
+    "subtitle": "Special products in this month.",
+    "tabs": ["New Launch", "All", "Best Seller", "Most viewed"],
+    "items": [
+      { "productId": "apple-iphone-17-pro-max-256-tdra-orange", "category": "new-launch" },
+      { "productId": "apple-iphone-17-pro-256-tdra-orange", "category": "new-launch" },
+      { "productId": "apple-iphone-17-air-256-usa-gold", "category": "new-launch" },
+      { "productId": "apple-iphone-17-256-tdra-mist-blue", "category": "new-launch" },
+      { "productId": "samsung-s25-ultra-256-silver-blue", "category": "new-launch" },
+      { "productId": "samsung-s25-ultra-256-gray", "category": "new-launch" },
+      { "productId": "samsung-a56-8-256-gray", "category": "new-launch" },
+      { "productId": "samsung-s25-fe-128-navy", "category": "new-launch" },
+
+      { "productId": "apple-iphone-17-pro-max-256-tdra-orange", "category": "all" },
+      { "productId": "apple-iphone-16-pro-max-256-tdra-natural", "category": "all" },
+      { "productId": "samsung-s25-ultra-256-silver-blue", "category": "all" },
+      { "productId": "samsung-s24-ultra-256-gray", "category": "all" },
+      { "productId": "apple-airpods-pro-3", "category": "all" },
+      { "productId": "apple-ipad-11-128-tdra-blue", "category": "all" },
+      { "productId": "samsung-a56-8-256-gray", "category": "all" },
+      { "productId": "apple-iphone-17-pro-256-tdra-orange", "category": "all" },
+
+      { "productId": "apple-iphone-16-pro-max-256-tdra-natural", "category": "best-seller" },
+      { "productId": "apple-iphone-16-pro-max-512-tdra-desert", "category": "best-seller" },
+      { "productId": "samsung-s24-ultra-256-gray", "category": "best-seller" },
+      { "productId": "apple-airpods-pro-3", "category": "best-seller" },
+      { "productId": "samsung-a56-8-256-gray", "category": "best-seller" },
+      { "productId": "apple-ipad-11-128-tdra-blue", "category": "best-seller" },
+      { "productId": "samsung-a36-256-black", "category": "best-seller" },
+      { "productId": "apple-airpods-4", "category": "best-seller" },
+
+      { "productId": "apple-iphone-17-pro-max-512-tdra-orange", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-max-256-japan-orange", "category": "most-viewed" },
+      { "productId": "samsung-s25-ultra-512-jet-black", "category": "most-viewed" },
+      { "productId": "apple-iphone-16-pro-max-512-tdra-black", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-512-tdra-orange", "category": "most-viewed" },
+      { "productId": "apple-iphone-17-pro-max-256-hk-orange", "category": "most-viewed" },
+      { "productId": "samsung-s25-ultra-256-jet-black", "category": "most-viewed" },
+      { "productId": "apple-iphone-16-pro-256-india-desert", "category": "most-viewed" }
+    ]
+  },
+
+  "promoBanners": [
+    {
+      "id": "promo-1",
+      "subtitle": "45mm Silver Aluminum",
+      "title": "Apple Series 8",
+      "accentText": null,
+      "buttonText": "See More",
+      "buttonLink": "#",
+      "image": "assets/images/Banner_29.webp",
+      "theme": "dark"
+    },
+    {
+      "id": "promo-2",
+      "subtitle": "Apple Watch 10 46mm",
+      "title": "APPLE SERIES 10",
+      "accentText": null,
+      "buttonText": "See More",
+      "buttonLink": "#",
+      "image": "assets/images/Banner_30.webp",
+      "theme": "light"
+    },
+    {
+      "id": "promo-3",
+      "subtitle": "Deal of the year",
+      "title": "13\" MacBook Pro",
+      "accentText": "Innovation Everywhere",
+      "buttonText": "Shop Now",
+      "buttonLink": "#",
+      "image": "assets/images/Banner_27.webp",
+      "theme": "dark"
+    },
+    {
+      "id": "promo-4",
+      "subtitle": "Customization",
+      "title": "Full Setup",
+      "accentText": "Flat 30% Off",
+      "buttonText": "Get Now",
+      "buttonLink": "#",
+      "image": "assets/images/Banner_28.webp",
+      "theme": "light-blue"
+    }
+  ]
+}
