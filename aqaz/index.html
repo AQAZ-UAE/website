@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iPoint Reseller & Repair Point</title>
+    <title>Al Qwas Al Zahabi - Electronics eCommerce Store</title>
     <meta name="description"
-        content="iPoint - Your trusted reseller for Apple products including iPhones, iPads, Macs and accessories.">
+        content="Al Qwas Al Zahabi - Your trusted Electronics eCommerce Store.">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Bootstrap 5 CSS -->
@@ -26,14 +26,18 @@
                 <span>Free shipping all over the UAE</span>
             </div>
             <div class="top-bar-right flex items-center gap-20">
-                <span>Need help? Call Us: <a href="tel:+971523315754"
-                        style="color: var(--accent-green); font-weight: bold;">+971-523315754</a></span>
-                <div class="dropdown">
-                    <span>English <i class="fa-solid fa-chevron-down"></i></span>
+                <span>Need help? Call Us: <a href="tel:80080018588"
+                        style="color: var(--accent-green); font-weight: bold;">(800) 8001-8588</a></span>
+                <div class="language-dropdown" style="position: relative; padding: 10px 0;">
+                    <span id="lang-btn" style="cursor: pointer; display: flex; align-items: center; gap: 5px;">English <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></span>
+                    <ul class="lang-menu" style="display: none; list-style: none; position: absolute; margin: 0; top: 100%; right: 0; min-width: 140px; z-index: 1500; padding: 5px 0; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        <li><a href="javascript:void(0)" onclick="setLanguage('en')" style="padding: 10px 15px; color: #1a2b4b; text-decoration: none; display: block; font-weight: 500;">English</a></li>
+                        <li><a href="javascript:void(0)" onclick="setLanguage('ar')" style="padding: 10px 15px; color: #1a2b4b; text-decoration: none; display: block; font-weight: 500;">Arabic (العربية)</a></li>
+                    </ul>
                 </div>
                 <div class="flag-switcher flex items-center gap-5" style="cursor: pointer;">
                     <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag"
-                        style="border-radius: 50%; width: 20px; height: 20px; object-fit: cover;">
+                        style="width: 20px; height: auto;">
                     <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
                 </div>
             </div>
@@ -45,7 +49,7 @@
         <div class="container">
             <div class="logo">
                 <a href="index.html">
-                    <img src="logo.png" alt="iPoint Logo">
+                    <img src="../images/logo-new.png" alt="Al Qwas Al Zahabi" class="brand-logo">
                 </a>
             </div>
 
@@ -62,35 +66,39 @@
             <nav class="header-nav">
                 <ul>
                     <li><a href="#" class="nav-link">Home</a></li>
-                    <li><a href="#" class="nav-link">iPhones Series <i class="fa-solid fa-chevron-down"></i></a></li>
+                    <li class="nav-item position-relative" id="iphone-nav-item">
+                        <a href="#" class="nav-link">iPhones Series <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu shadow-sm border-0" id="iphone-series-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; z-index: 1000;">
+                        </ul>
+                    </li>
                     <li><a href="#" class="nav-link">Collections <i class="fa-solid fa-chevron-down"></i></a></li>
                     <li><a href="#" class="nav-link">New Offer</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <div class="action-item">
+                <a href="admin.html" class="action-item">
                     <i class="fa-regular fa-user"></i>
                     <span>Account</span>
-                </div>
-                <div class="action-item">
+                </a>
+                <a href="#" class="action-item">
                     <i class="fa-regular fa-heart"></i>
                     <span>Wishlist</span>
-                </div>
-                <div class="action-item">
+                </a>
+                <a href="#" class="action-item">
                     <i class="fa-solid fa-bag-shopping"></i>
                     <span>Cart</span>
-                </div>
-                <div class="action-item">
+                </a>
+                <a href="#" class="action-item">
                     <i class="fa-solid fa-code-compare"></i>
                     <span>Compare</span>
-                </div>
+                </a>
             </div>
         </div>
     </header>
     <!-- New Year Sale Banner Section -->
     <section class="new-year-banner">
-        <div class="container p-0">
+        <div class="container">
             <div class="banner-wrapper">
                 <div class="col-sm-6"></div>
                 <div class="col-sm-6">
@@ -152,8 +160,10 @@
     <!-- Featured Collections -->
     <section class="featured-collections section">
         <div class="container">
-            <div class="collections-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 style="font-size: 2.2rem; color: #1a2b4b; margin: 0;">Featured Collections</h2>
+            <div class="collections-header">
+                <div class="title-area">
+                    <h2>Featured Collections</h2>
+                </div>
                 <div class="national-day-tabs">
                     <a href="javascript:void(0)" class="tab-link active" data-category="new-models">New Models</a>
                     <a href="javascript:void(0)" class="tab-link" data-category="best-seller">Best Seller</a>
@@ -281,9 +291,9 @@
             <div class="footer-col" id="footer-contact">
                 <h4>Contact</h4>
                 <div class="footer-contact-info">
-                    <p><strong>Address:</strong> Bur Dubai Computer Market, Near Gateway</p>
-                    <p><strong>Phone:</strong> +971-523315754</p>
-                    <p><strong>E-mail:</strong> support@ipoint.ae</p>
+                    <p><strong>Address:</strong> 17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                    <p><strong>Phone:</strong> (800) 8001-8588</p>
+                    <p><strong>E-mail:</strong> support@aqaz.ae</p>
                     <p><strong>Hours:</strong> 8:00 – 17:00, Mon – Sat</p>
                 </div>
                 <div class="footer-social">
@@ -326,32 +336,6 @@
                 </ul>
             </div>
 
-            <!-- Column 5: App & Payment -->
-            <div class="footer-col">
-                <h4>App & Payment</h4>
-                <div class="app-promo">
-                    <p>Download our Apps and get extra 15% Discount on your first Order...!</p>
-                    <div class="app-buttons">
-                        <a href="#" class="app-btn"><img
-                                src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                                alt="App Store"></a>
-                        <a href="#" class="app-btn"><img
-                                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                                alt="Google Play"></a>
-                    </div>
-                </div>
-                <div class="payment-gateways">
-                    <h5>Secured Payment Gateways</h5>
-                    <div class="gateway-icons">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg"
-                            alt="MasterCard">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d4/Maestro_logo.svg" alt="Maestro">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b7/American_Express_logo_%282018%29.svg"
-                            alt="Amex">
-                    </div>
-                </div>
-            </div>
         </div>
     </footer>
 
@@ -360,7 +344,7 @@
         <div class="container">
             <div class="footer-bottom-nav flex items-center gap-40 mb-4 px-2">
                 <div class="footer-logo">
-                    <img src="logo.png" alt="iPoint Logo" style="height: 40px; width: auto;">
+                    <img src="../images/logo-new.png" alt="Al Qwas Al Zahabi" style="height: 40px; width: auto;">
                 </div>
                 <div class="footer-bottom-menu flex gap-20">
                     <a href="#" class="nav-link" style="font-weight: 700; color: var(--primary-blue);">iPhone</a>
@@ -391,7 +375,7 @@
         <div class="container">
             <div class="flex justify-between items-center copyright-wrapper">
                 <div class="copyright-text">
-                    <p>Copyright © 2025 iPoint. All rights reserved.</p>
+                    <p>© Al Qwas Al Zahabi Mobile Phone Trading LL.C - All rights reserved</p>
                 </div>
                 <div class="copyright-links">
                     <a href="#">Terms & Conditions</a>
@@ -404,7 +388,7 @@
 
     <!-- Floating UI Elements -->
     <div class="floating-controls">
-        <a href="https://wa.me/971523315754" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+        <a href="https://wa.me/4480080018588" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
         <button id="scrollToTop" class="scroll-top-btn" title="Back to Top">
@@ -417,6 +401,38 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/render.js"></script>
     <script src="js/script.js"></script>
+    
+    <!-- Google Translate Integration -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'ar,en', autoDisplay: false }, 'google_translate_element');
+        }
+        function setLanguage(langCode) {
+            // Force Google Translate using cookies and reload
+            document.cookie = `googtrans=/en/${langCode}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=/en/${langCode}; domain=${window.location.hostname}; path=/;`;
+            }
+            window.location.reload();
+        }
+
+        // Initialize UI direction and label based on language cookie on load
+        document.addEventListener("DOMContentLoaded", function() {
+            var isArabic = document.cookie.indexOf('googtrans=/en/ar') !== -1;
+            const langBtn = document.getElementById("lang-btn");
+            if (isArabic) {
+                if(langBtn) langBtn.innerHTML = 'Arabic (العربية) <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>';
+                document.documentElement.dir = "rtl";
+                document.body.classList.add("rtl-active");
+            } else {
+                if(langBtn) langBtn.innerHTML = 'English <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>';
+                document.documentElement.dir = "ltr";
+                document.body.classList.remove("rtl-active");
+            }
+        });
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 
 </html>

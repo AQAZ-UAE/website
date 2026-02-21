@@ -86,41 +86,52 @@ if (hotSellingSlider && navBtns.length === 2) {
 
         const container = hotSellingSlider.parentElement;
         const cardWidth = cards[0].offsetWidth + 20; // Width + gap
+        const cardsToScroll = Math.floor((container.offsetWidth + 20) / cardWidth) || 1;
+        const scrollAmount = cardsToScroll * cardWidth;
         const maxScroll = Math.max(0, hotSellingSlider.scrollWidth - container.offsetWidth);
+        
+        const isRtl = document.documentElement.dir === 'rtl';
 
         if (direction === 'next') {
             if (Math.abs(currentPosition) >= maxScroll) {
-                // Bounce effect at end - longer pull back
-                hotSellingSlider.style.transform = `translateX(${currentPosition - 80}px)`;
+                // Bounce effect at end
+                const bounce = isRtl ? 80 : -80;
+                hotSellingSlider.style.transform = `translateX(${currentPosition + bounce}px)`;
                 setTimeout(() => {
                     hotSellingSlider.style.transform = `translateX(${currentPosition}px)`;
                 }, 400);
                 return;
             }
-            currentPosition -= cardWidth;
-            if (Math.abs(currentPosition) > maxScroll) {
-                currentPosition = -maxScroll;
-            }
+            currentPosition -= isRtl ? -scrollAmount : scrollAmount;
+            if (!isRtl && currentPosition < -maxScroll) currentPosition = -maxScroll;
+            if (isRtl && currentPosition > maxScroll) currentPosition = maxScroll;
+            
         } else {
             if (currentPosition === 0) {
-                // Bounce effect at start - longer pull back
-                hotSellingSlider.style.transform = `translateX(80px)`;
+                // Bounce effect at start
+                const bounce = isRtl ? -80 : 80;
+                hotSellingSlider.style.transform = `translateX(${bounce}px)`;
                 setTimeout(() => {
                     hotSellingSlider.style.transform = `translateX(0px)`;
                 }, 400);
                 return;
             }
-            currentPosition += cardWidth;
-            if (currentPosition > 0) {
-                currentPosition = 0;
-            }
+            currentPosition += isRtl ? -scrollAmount : scrollAmount;
+            if (!isRtl && currentPosition > 0) currentPosition = 0;
+            if (isRtl && currentPosition < 0) currentPosition = 0;
         }
 
         hotSellingSlider.style.transform = `translateX(${currentPosition}px)`;
     };
 
-    nextBtn.addEventListener('click', () => moveSlider('next'));
-    prevBtn.addEventListener('click', () => moveSlider('prev'));
+    nextBtn.addEventListener('click', () => {
+        const isRtl = document.documentElement.dir === 'rtl';
+        moveSlider(isRtl ? 'prev' : 'next');
+    });
+    prevBtn.addEventListener('click', () => {
+        const isRtl = document.documentElement.dir === 'rtl';
+        moveSlider(isRtl ? 'next' : 'prev');
+    });
 
     // Reset on window resize
     window.addEventListener('resize', () => {
@@ -1367,13 +1378,15 @@ function initBestSellerSlider() {
 
     // Arrow Navigation - Scroll by full visible width (Pages)
     nextBtn.addEventListener('click', () => {
-        const moveDistance = slider.offsetWidth;
+        const isRtl = document.documentElement.dir === 'rtl';
+        const moveDistance = isRtl ? -slider.offsetWidth : slider.offsetWidth;
         slider.scrollBy({ left: moveDistance, behavior: 'smooth' });
     });
 
     prevBtn.addEventListener('click', () => {
-        const moveDistance = slider.offsetWidth;
-        slider.scrollBy({ left: -moveDistance, behavior: 'smooth' });
+        const isRtl = document.documentElement.dir === 'rtl';
+        const moveDistance = isRtl ? slider.offsetWidth : -slider.offsetWidth;
+        slider.scrollBy({ left: moveDistance, behavior: 'smooth' });
     });
 
     // Drag to Scroll Logic
