@@ -212,7 +212,7 @@
         <a href="product-details.html?id=${p.id}" class="item-card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
           ${discount > 0 ? `<div class="discount-pill">-${discount}%</div>` : ""}
           <div class="item-actions" onclick="event.preventDefault();">
-            <button class="action-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+            <button class="action-btn" title="Add to Wishlist" data-product-id="${p.id}" onclick="window.toggleWishlist('${p.id}', this)"><i class="fa-regular fa-heart"></i></button>
             <button class="action-btn" title="Quick View"><i class="fa-solid fa-expand"></i></button>
             <button class="action-btn" title="Compare" onclick="event.preventDefault(); window.openCompareModal && window.openCompareModal('${p.id}')"><i class="fa-regular fa-eye"></i></button>
           </div>
@@ -231,7 +231,7 @@
             </div>
             <span class="item-available">Available: ${p.available}</span>
           </div>
-          <button class="btn-add-cart" onclick="event.preventDefault(); alert('Added to cart!');">Add To Cart</button>
+          <button class="btn-add-cart" onclick="event.preventDefault(); window.addToCart('${p.id}');">Add To Cart</button>
         </a>`;
       })
       .join("");
@@ -292,7 +292,7 @@
           <a href="product-details.html?id=${p.id}" class="item-card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
             ${discount > 0 ? `<div class="discount-pill">-${discount}%</div>` : ""}
             <div class="item-actions" onclick="event.preventDefault();">
-              <button class="action-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+              <button class="action-btn" title="Add to Wishlist" data-product-id="${p.id}" onclick="window.toggleWishlist('${p.id}', this)"><i class="fa-regular fa-heart"></i></button>
               <button class="action-btn" title="Quick View"><i class="fa-solid fa-expand"></i></button>
               <button class="action-btn" title="Compare" onclick="event.preventDefault(); window.openCompareModal && window.openCompareModal('${p.id}')"><i class="fa-regular fa-eye"></i></button>
             </div>
@@ -311,7 +311,7 @@
               </div>
               <span class="item-available">Available: ${p.available}</span>
             </div>
-            <button class="btn-add-cart" onclick="event.preventDefault(); alert('Added to cart!');">Add To Cart</button>
+            <button class="btn-add-cart" onclick="event.preventDefault(); window.addToCart('${p.id}');">Add To Cart</button>
           </a>`;
           })
           .join("");

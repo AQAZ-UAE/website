@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Qwas Al Zahabi - Electronics eCommerce Store</title>
+    <meta name="description"
+        content="Al Qwas Al Zahabi - Your trusted Electronics eCommerce Store.">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container flex justify-between items-center">
+            <div class="top-bar-left">
+                <a href="#">About Us</a>
+            </div>
+            <div class="top-bar-center">
+                <span>Free shipping all over the UAE</span>
+            </div>
+            <div class="top-bar-right flex items-center gap-20">
+                <span>Need help? Call Us: <a href="tel:80080018588"
+                        style="color: var(--accent-green); font-weight: bold;">(800) 8001-8588</a></span>
+                <div class="language-dropdown" style="position: relative; padding: 10px 0;">
+                    <span id="lang-btn" style="cursor: pointer; display: flex; align-items: center; gap: 5px;">English <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i></span>
+                    <ul class="lang-menu" style="display: none; list-style: none; position: absolute; margin: 0; top: 100%; right: 0; min-width: 140px; z-index: 1500; padding: 5px 0; background-color: #ffffff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                        <li><a href="javascript:void(0)" onclick="setLanguage('en')" style="padding: 10px 15px; color: #1a2b4b; text-decoration: none; display: block; font-weight: 500;">English</a></li>
+                        <li><a href="javascript:void(0)" onclick="setLanguage('ar')" style="padding: 10px 15px; color: #1a2b4b; text-decoration: none; display: block; font-weight: 500;">Arabic (العربية)</a></li>
+                    </ul>
+                </div>
+                <div class="flag-switcher flex items-center gap-5" style="cursor: pointer;">
+                    <img src="https://flagcdn.com/w20/ae.png" alt="UAE Flag"
+                        style="width: 20px; height: auto;">
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../images/logo-new.png" alt="Al Qwas Al Zahabi" class="brand-logo">
+                </a>
+            </div>
+
+            <div class="search-container">
+                <div class="category-dropdown">
+                    <span>All Categories</span>
+                    <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>
+                </div>
+                <div class="search-divider"></div>
+                <input type="text" placeholder="Search for items...">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item position-relative" id="iphone-nav-item">
+                        <a href="#" class="nav-link">iPhones Series <i class="fa-solid fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu shadow-sm border-0" id="iphone-series-menu" style="display: none; position: absolute; top: 100%; left: 0; min-width: 200px; z-index: 1000;">
+                        </ul>
+                    </li>
+                    <li><a href="#" class="nav-link">Collections <i class="fa-solid fa-chevron-down"></i></a></li>
+                    <li><a href="#" class="nav-link">New Offer</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="javascript:void(0)" class="action-item" onclick="toggleWishlistModal()">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Wishlist</span>
+                    <div class="badge wishlist-badge" style="display:none;">0</div>
+                </a>
+                <a href="javascript:void(0)" class="action-item" onclick="toggleCartModal()">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span>Cart</span>
+                    <div class="badge cart-badge">0</div>
+                </a>
+                <a href="javascript:void(0)" class="action-item d-none">
+                    <i class="fa-solid fa-code-compare"></i>
+                    <span>Compare</span>
+                </a>
+                <a href="login.html" class="action-item">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Login/Register</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main id="product-details-container" class="container my-5" style="min-height: 50vh;">
+        <div class="text-center py-5">
+            <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
+            <p class="mt-3" style="color: #666; font-size: 1.1rem;">Loading product details...</p>
+        </div>
+    </main>
+
+    <!-- Related Products Section -->
+    <section class="related-products mt-5 mb-5 pb-5">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h3 style="font-size: 1.5rem; color: #1a2b4b; font-weight: 700; margin: 0;">Related products</h3>
+                <div class="slider-nav" style="display: flex; gap: 10px;">
+                    <button class="nav-btn" id="relatedPrevBtn" style="background: transparent; border: 1px solid #ddd; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: #333;"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="nav-btn" id="relatedNextBtn" style="background: transparent; border: 1px solid #ddd; border-radius: 50%; width: 36px; height: 36px; cursor: pointer; color: #333;"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+            <div class="related-slider-container" style="overflow: hidden; padding-bottom: 20px;">
+                <div class="related-slider-track" id="relatedSliderTrack" style="display: flex; gap: 20px; transition: transform 0.4s ease-in-out;">
+                    <!-- Filled dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+<footer class="site-footer">
+        <div class="container footer-container">
+            <!-- Column 1: Contact -->
+            <div class="footer-col" id="footer-contact">
+                <h4>Contact</h4>
+                <div class="footer-contact-info">
+                    <p><strong>Address:</strong> 17 Princess Road, London, Greater London NW1 8JR, UK</p>
+                    <p><strong>Phone:</strong> (800) 8001-8588</p>
+                    <p><strong>E-mail:</strong> support@aqaz.ae</p>
+                    <p><strong>Hours:</strong> 8:00 – 17:00, Mon – Sat</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Apple Devices -->
+            <div class="footer-col">
+                <h4>Apple Devices</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Apple Studio</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Mac's</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> MacBooks</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Laptops</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Main Menu -->
+            <div class="footer-col">
+                <h4>Main Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Privacy Policy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Shipping Policy</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Terms and Conditions</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Refund and Returns</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> News</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: My account -->
+            <div class="footer-col">
+                <h4>My account</h4>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Shop</a></li>
+                    <li><a href="#"><i class="fa-solid fa-chevron-right"></i> Orders</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Footer Bottom Category Links -->
+    <div class="footer-bottom-links">
+        <div class="container">
+            <div class="footer-bottom-nav flex items-center gap-40 mb-4 px-2">
+                <div class="footer-logo">
+                    <img src="../images/logo-new.png" alt="Al Qwas Al Zahabi" style="height: 40px; width: auto;">
+                </div>
+                <div class="footer-bottom-menu flex gap-20">
+                    <a href="#" class="nav-link" style="font-weight: 700; color: var(--primary-blue);">iPhone</a>
+                    <a href="#" class="nav-link" style="font-weight: 700; color: var(--primary-blue);">MacBooks</a>
+                    <a href="#" class="nav-link" style="font-weight: 700; color: var(--primary-blue);">Accessories</a>
+                    <a href="#" class="nav-link" style="font-weight: 700; color: var(--primary-blue);">Laptops</a>
+                </div>
+            </div>
+            <div class="category-links pt-4" style="border-top: 1px solid #E4E7EC;">
+                <strong>Electronic:</strong>
+                <a href="#">Apple Phones</a> |
+                <a href="#">MacBooks</a> |
+                <a href="#">iPads</a> |
+                <a href="#">Apple Watch</a> |
+                <a href="#">Samsung</a> |
+                <a href="#">Ipad's</a> |
+                <a href="#">Wireless Headphones</a> |
+                <a href="#">Samsung Galaxy S23</a> |
+                <a href="#">Gaming Mouse</a> |
+                <a href="#">Home</a> |
+                <a href="#">Office Accessories</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Copyright Section -->
+    <div class="footer-copyright">
+        <div class="container">
+            <div class="flex justify-between items-center copyright-wrapper">
+                <div class="copyright-text">
+                    <p>© Al Qwas Al Zahabi Mobile Phone Trading LL.C - All rights reserved</p>
+                </div>
+                <div class="copyright-links">
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Shipping Policy</a>
+                    <a href="#">Refund & Returns</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating UI Elements -->
+    <div class="floating-controls">
+        <a href="https://wa.me/4480080018588" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <button id="scrollToTop" class="scroll-top-btn" title="Back to Top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    </div>
+
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom Scripts -->
+    <script src="js/compare-modal.js"></script>
+    <script src="js/product-details.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/script.js"></script>
+    
+    <!-- Google Translate Integration -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'ar,en', autoDisplay: false }, 'google_translate_element');
+        }
+        function setLanguage(langCode) {
+            // Force Google Translate using cookies and reload
+            document.cookie = `googtrans=/en/${langCode}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=/en/${langCode}; domain=${window.location.hostname}; path=/;`;
+            }
+            window.location.reload();
+        }
+
+        // Initialize UI direction and label based on language cookie on load
+        document.addEventListener("DOMContentLoaded", function() {
+            var isArabic = document.cookie.indexOf('googtrans=/en/ar') !== -1;
+            const langBtn = document.getElementById("lang-btn");
+            if (isArabic) {
+                if(langBtn) langBtn.innerHTML = 'Arabic (العربية) <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>';
+                document.documentElement.dir = "rtl";
+                document.body.classList.add("rtl-active");
+            } else {
+                if(langBtn) langBtn.innerHTML = 'English <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem;"></i>';
+                document.documentElement.dir = "ltr";
+                document.body.classList.remove("rtl-active");
+            }
+        });
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

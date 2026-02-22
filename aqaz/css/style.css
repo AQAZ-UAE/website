@@ -315,6 +315,7 @@ img {
   cursor: pointer;
   text-decoration: none;
   transition: color 0.3s;
+  position: relative;
 }
 
 .action-item:hover {
@@ -333,11 +334,12 @@ img {
 .action-item .badge {
   position: absolute;
   top: -8px;
-  left: 12px;
+  left: 14px;
+  right: auto;
   background-color: var(--primary-blue);
   color: white;
   font-size: 0.7rem;
-  min-width: 18px;
+  width: 18px;
   height: 18px;
   display: flex;
   align-items: center;
