@@ -1,4 +1,3 @@
-
 :root {
   --primary-blue: #425a8b;
   --text-navy: #0e224d;
@@ -226,6 +225,18 @@ img {
   font-size: 1.1rem;
   padding-left: 10px;
   cursor: pointer;
+}
+
+/* Search Results UI */
+.search-results-dropdown {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid var(--border-color);
+}
+.search-result-item:hover {
+  background-color: var(--light-gray) !important;
+}
+.search-result-item:last-child {
+  border-bottom: none !important;
 }
 
 /* Navigation */

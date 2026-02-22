@@ -32,6 +32,7 @@
       renderBestSellers();
       renderPromoBanners();
       renderNavDropdown(products);
+      initSearch(products);
 
       // Re-init interactive features from script.js
       if (typeof window.reinitSliders === "function") {
@@ -77,10 +78,10 @@
         const p = getProduct(item.productId);
         if (!p) return "";
         return `
-        <div class="mini-card">
-          <img src="${p.image}" alt="${p.model}" loading="lazy">
-          <span>${p.model}</span>
-        </div>`;
+        <a href="product-details.html?id=${p.id}" class="mini-card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
+          <img src="${p.image}" alt="${p.model}" loading="lazy" style="flex:1;">
+          <span style="font-weight:600; color:#1a2b4b; margin-top:10px;">${p.model}</span>
+        </a>`;
       })
       .join("");
   }
@@ -135,7 +136,7 @@
           .join("");
 
         return `
-        <div class="national-card ${images.length > 1 ? "has-slider" : ""}">
+        <a href="product-details.html?id=${p.id}" class="national-card ${images.length > 1 ? "has-slider" : ""}" style="text-decoration:none; color:inherit; display:flex;">
           <div class="img-side product-slider" id="${sliderId}">
             ${imgTags}
           </div>
@@ -162,7 +163,7 @@
               <span class="available-txt">Available: ${p.available}</span>
             </div>
           </div>
-        </div>`;
+        </a>`;
       })
       .join("");
 
@@ -208,12 +209,12 @@
         const discount = calcDiscount(p.price, p.oldPrice);
 
         return `
-        <div class="item-card">
+        <a href="product-details.html?id=${p.id}" class="item-card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
           ${discount > 0 ? `<div class="discount-pill">-${discount}%</div>` : ""}
-          <div class="item-actions">
+          <div class="item-actions" onclick="event.preventDefault();">
             <button class="action-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
             <button class="action-btn" title="Quick View"><i class="fa-solid fa-expand"></i></button>
-            <button class="action-btn" title="Compare"><i class="fa-regular fa-eye"></i></button>
+            <button class="action-btn" title="Compare" onclick="event.preventDefault(); window.openCompareModal && window.openCompareModal('${p.id}')"><i class="fa-regular fa-eye"></i></button>
           </div>
           <div class="item-img-box">
             <img src="${p.image}" alt="${p.model}" loading="lazy">
@@ -230,8 +231,8 @@
             </div>
             <span class="item-available">Available: ${p.available}</span>
           </div>
-          <button class="btn-add-cart">Add To Cart</button>
-        </div>`;
+          <button class="btn-add-cart" onclick="event.preventDefault(); alert('Added to cart!');">Add To Cart</button>
+        </a>`;
       })
       .join("");
   }
@@ -288,12 +289,12 @@
             const discount = calcDiscount(p.price, p.oldPrice);
 
             return `
-          <div class="item-card">
+          <a href="product-details.html?id=${p.id}" class="item-card" style="text-decoration:none; color:inherit; display:flex; flex-direction:column;">
             ${discount > 0 ? `<div class="discount-pill">-${discount}%</div>` : ""}
-            <div class="item-actions">
+            <div class="item-actions" onclick="event.preventDefault();">
               <button class="action-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
               <button class="action-btn" title="Quick View"><i class="fa-solid fa-expand"></i></button>
-              <button class="action-btn" title="Compare"><i class="fa-regular fa-eye"></i></button>
+              <button class="action-btn" title="Compare" onclick="event.preventDefault(); window.openCompareModal && window.openCompareModal('${p.id}')"><i class="fa-regular fa-eye"></i></button>
             </div>
             <div class="item-img-box">
               <img src="${p.image}" alt="${p.model}" loading="lazy">
@@ -310,8 +311,8 @@
               </div>
               <span class="item-available">Available: ${p.available}</span>
             </div>
-            <button class="btn-add-cart">Add To Cart</button>
-          </div>`;
+            <button class="btn-add-cart" onclick="event.preventDefault(); alert('Added to cart!');">Add To Cart</button>
+          </a>`;
           })
           .join("");
 
@@ -377,6 +378,73 @@
         images[currentIndex].classList.add("active");
       }, 3000);
     });
+  }
+
+  // ── Search ──────────────────────────────────────────
+  function initSearch(products) {
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+    if (!searchInput || !searchResults) return;
+
+    searchInput.addEventListener("input", function (e) {
+      const q = e.target.value.toLowerCase().trim();
+      if (!q) {
+        searchResults.style.display = "none";
+        return;
+      }
+
+      // Filter products by title, model, or brand
+      const filtered = products.filter(
+        (p) =>
+          (p.title && p.title.toLowerCase().includes(q)) ||
+          (p.model && p.model.toLowerCase().includes(q)) ||
+          (p.brand && p.brand.toLowerCase().includes(q))
+      ).slice(0, 10); // Limit to 10 results
+
+      if (filtered.length === 0) {
+        searchResults.innerHTML = `<div style="padding: 15px; text-align: center; color: #666;">No products found for "${q}"</div>`;
+      } else {
+        searchResults.innerHTML = filtered
+          .map((p) => {
+            return `
+            <a href="product-details.html?id=${p.id}" class="search-result-item" style="display: flex; align-items: center; padding: 10px 15px; text-decoration: none; border-bottom: 1px solid #f0f0f0; color: #1a2b4b; transition: background 0.2s;">
+              <img src="${p.image}" alt="${p.title}" style="width: 40px; height: 40px; object-fit: contain; margin-right: 15px;">
+              <div style="flex: 1;">
+                <div style="font-weight: 600; font-size: 0.9rem; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${p.title}</div>
+                <div style="color: #ff6b00; font-weight: 700; font-size: 0.85rem;">AED ${formatPrice(p.price)}</div>
+              </div>
+            </a>
+          `;
+          })
+          .join("");
+      }
+      searchResults.style.display = "block";
+    });
+
+    // Hide results when clicking outside
+    document.addEventListener("click", function (e) {
+      if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = "none";
+      }
+    });
+
+    // Show when clicking input if there's text
+    searchInput.addEventListener("focus", function() {
+      if (this.value.trim().length > 0) {
+        searchResults.style.display = "block";
+      }
+    });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchParam = urlParams.get("search");
+    if (searchParam) {
+      searchInput.value = searchParam;
+      searchInput.dispatchEvent(new Event("input", { bubbles: true }));
+      setTimeout(() => {
+        searchInput.focus();
+        searchResults.style.display = "block";
+      }, 500);
+    }
   }
 
   // ── Expose for script.js ──────────────────────────────
